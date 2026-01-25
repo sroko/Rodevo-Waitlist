@@ -741,4 +741,81 @@ body.no-scroll {
   font-size: 20px;
   border: none;
   cursor: pointer;
+
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+
+@media (max-width: 768px) {
+    /* 1. Fix the Container padding so content doesn't hit the screen edges */
+    .container {
+        padding: 0 20px;
+    }
+
+    /* 2. Fix the Navigation: Stack logo and links or shrink fonts */
+    header {
+        height: auto;
+        padding: 20px 0;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo-ro, .logo-devo { font-size: 32px; }
+    .logo-waitlist { font-size: 20px; }
+
+    nav a {
+        font-size: 18px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    /* 3. Fix the Hero Section: Stack text and card vertically */
+    .hero-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    /* 4. Fix the Glass Card: Make it fit the screen width */
+    .glass-card {
+        width: 100%; /* Card now expands to fill the phone width */
+        max-width: 360px; /* But doesn't get too huge */
+        height: auto;
+        padding: 30px 20px;
+        margin-top: 20px;
+    }
+
+    /* 5. Fix the Inputs and Buttons: Scale them down to fit the card */
+    .input-wrapper, 
+    .input-container,
+    .cta-btn,
+    .cta-button {
+        width: 100% !important; /* Force them to fit inside the card */
+        max-width: 300px;
+    }
+
+    .input-border-svg {
+        width: 100%; /* Scale the blue outline */
+    }
+
+    /* 6. Fix the Reach Out Grid: Stack the info and the form */
+    .reachout-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    .reachout-form-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* 7. Hide or Scale Background Blobs: They often mess up mobile scrolling */
+    .hero-bg-triangle, .blob-blue {
+        display: none; 
+    }
 }
