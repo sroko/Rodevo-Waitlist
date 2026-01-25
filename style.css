@@ -827,8 +827,8 @@ nav a.active::after {
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
     background-color: var(--blue-dark);
     border-radius: 50%;
     
@@ -850,3 +850,4 @@ nav a.active::after {
         opacity: 1;
     }
 }
+
