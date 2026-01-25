@@ -1,0 +1,744 @@
+:root {
+    --blue-dark: #0A0566;
+    --grey-text: #BFBDBC;
+    --black: #000000;
+    --white: #FFFFFF;
+    
+    --font-heading: 'Lustria', serif;
+    --font-body: 'Kumbh Sans', sans-serif;
+    --font-logo: 'Tiro Tamil', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* --- Background Shapes --- */
+.hero-bg-triangle {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 70vw; 
+    min-width: 992px;
+    height: 828px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.blob-blue {
+    position: absolute;
+    top: 429px;
+    right: 0; 
+    width: 681px;
+    height: 845px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob-grey {
+    position: absolute;
+    top: 2221px;
+    right: 0; 
+    width: 694px;
+    height: 964px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* --- Container --- */
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 45px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Header --- */
+header {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--blue-dark);
+    background: var(--white);
+    position: relative;
+    z-index: 10;
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo-ro { font-family: var(--font-logo); font-size: 56px; color: var(--grey-text); }
+.logo-devo { font-family: var(--font-logo); font-size: 56px; color: var(--blue-dark); }
+.logo-waitlist { font-family: var(--font-body); font-size: 36px; color: var(--grey-text); margin-left: 10px; }
+
+/* --- Nav with Active Dot --- */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    font-family: var(--font-body);
+    font-size: 30px;
+    color: var(--black);
+    text-decoration: none;
+    margin-left: 40px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* The Blue Dot implementation */
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Positioned under the text like Figma */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: var(--blue-dark);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Active state for the clicked link */
+nav a.active {
+    color: var(--blue-dark);
+}
+
+nav a.active::after {
+    opacity: 1;
+}
+
+/* --- Hero Section --- */
+.hero {
+    padding-top: 40px;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-text-block {
+    width: 45%; 
+    padding-top: 30px;
+}
+
+.hero-text-block h1 {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    color: var(--white);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.hero-text-block p {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--white);
+    line-height: 1.6;
+    max-width: 470px;
+}
+
+/* --- Glass Card --- */
+.glass-card {
+    width: 550px;
+    height: 524px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border-radius: 40px;
+    box-shadow: inset 0 0 14.7px 2px rgba(255,255,255,0.08), 3px 3px 42.7px 2px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    margin-top: 150px;
+}
+
+.glass-card h2 {
+    font-family: var(--font-body);
+    font-size: 64px;
+    color: var(--blue-dark);
+    font-weight: 400;
+}
+
+.join-text {
+    font-family: var(--font-body);
+    font-size: 24px;
+    color: var(--blue-dark);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    width: 340px;
+}
+
+.input-group label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--black);
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid var(--blue-dark);
+    background: transparent;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.cta-button {
+    width: 340px;
+    height: 60px;
+    background-color: var(--blue-dark);
+    border-radius: 10px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.card-footer {
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--black);
+}
+
+.card-footer a { color: var(--black); }
+
+.copyright {
+    margin-top: auto;
+    font-size: 12px;
+    font-family: var(--font-body);
+}
+
+/* --- Problem & Solution --- */
+.problem-solution {
+    margin-top: 500px;
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    color: var(--black);
+    margin-bottom: 100px;
+}
+
+.grid-layout {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.sub-heading {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    color: var(--black);
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.body-text {
+    font-family: var(--font-body);
+    font-size: 32px;
+    color: var(--black);
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* --- Features --- */
+.features {
+    margin-top: 200px;
+    margin-bottom: 100px;
+}
+
+.features-list {
+    font-size: 32px;
+    line-height: 1.6;
+}
+
+.feature-title {
+    font-family: var(--font-heading);
+    color: var(--black);
+}
+
+.feature-desc {
+    font-family: var(--font-body);
+    font-weight: 200;
+    color: var(--black);
+}
+
+.feature-item { margin-bottom: 40px; }
+
+/* --- Mobile / Responsive Overrides --- */
+@media (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    
+    .logo-ro, .logo-devo { font-size: 36px; }
+    .logo-waitlist { font-size: 24px; }
+    nav a { font-size: 18px; margin-left: 15px; }
+    nav a::after { bottom: -8px; width: 5px; height: 5px; }
+
+    .hero-content { flex-direction: column; }
+    .hero-text-block { width: 100%; }
+    .hero-bg-triangle { width: 100%; height: 600px; }
+    
+    .glass-card { margin: 50px auto 0; max-width: 100%; }
+    
+    .grid-layout { flex-direction: column; }
+    
+    .hero-text-block h1 { font-size: 32px; }
+    .hero-text-block p { font-size: 18px; }
+    .section-heading, .sub-heading { font-size: 36px; }
+    .body-text, .features-list { font-size: 20px; }
+    
+    .blob-blue, .blob-grey { display: none; }
+}
+
+.privacy-overlay {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 2000;
+    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-overlay.active {
+    top: 0; /* Slide up to cover screen */
+}
+
+.privacy-header-bg, .privacy-header {
+    background-color: var(--blue-dark);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: sticky; /* Keeps close button visible while scrolling policy */
+    top: 0;
+    z-index: 2001;
+
+    padding: 20px 0;
+    height: auto !important;
+}
+
+.privacy-nav-mock, .privacy-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-privacy svg {
+    width: 28px;
+    height: 28px; 
+    transition: transform 0.2s ease;
+}
+
+.close-privacy:hover {
+    transform: scale(1.1);
+}
+
+.privacy-body {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+
+.privacy-title {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    color: var(--blue-dark);
+    margin-bottom: 40px;
+}
+
+.privacy-text {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+.privacy-text p { margin-bottom: 20px; }
+
+.privacy-updated {
+    margin-top: 30px;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    border-bottom: 2px solid var(--black);
+    display: inline-block;
+}
+
+.privacy-policy-title-header {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 400;
+}
+
+/* Ensure body doesn't scroll when privacy is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/*ABOUT US*/
+.about-page-body {
+    background-color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Blue Strip on the right */
+.side-strip {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 250px; /* Matching the rect width from your file */
+    height: 100vh;
+    background-color: var(--blue-dark);
+    z-index: 1; /* Behind content */
+}
+
+.about-main-container {
+    max-width: 1200px;
+    margin-left: 100px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 10; /* Above the strip */
+}
+
+/* Introduction Text */
+.intro-block { margin-bottom: 100px; }
+.text-0-1-11 {
+    font-size: 32px;
+    font-family: var(--font-body);
+    width: 749px; /* Exact width from your CSS snippet */
+    line-height: 1.4;
+}
+
+/* Mission Row: Content on Left, Emblem on Right */
+.mission-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 150px;
+}
+
+.mission-content { width: 585px; } /* Exact width from your CSS snippet */
+
+.text-0-1-12, .text-1-2-0 {
+    font-size: 64px;
+    font-family: var(--font-heading);
+    margin-bottom: 30px;
+}
+
+.text-0-1-13, .text-1-2-1 {
+    font-size: 32px;
+    font-family: var(--font-heading);
+    line-height: 1.4;
+}
+
+/* Emblem Styling */
+.about-emblem-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-text-sub {
+    font-family: var(--font-body);
+    font-size: 24px;
+    color: var(--blue-dark);
+    margin-top: 15px;
+}
+
+/* Spacing for sections */
+.pillars-block, .forward-block {
+    margin-bottom: 150px;
+    max-width: 850px;
+}
+
+.pillars-block p {
+    margin-bottom: 25px;
+}
+
+/*ROADMAP*/
+.roadmap-page-body {
+    background-color: var(--blue-dark);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+.roadmap-header {
+    background-color: var(--white);
+}
+
+.roadmap-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 100px 50px;
+}
+
+.roadmap-layout-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Roadmap List Container */
+.roadmap-stages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between each stage */
+}
+
+/* Individual Stage Row */
+.roadmap-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* The Circle */
+.status-circle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--white); /* Default white */
+    flex-shrink: 0;
+}
+
+.stage-text {
+    font-family: var(--font-body);
+    font-size: 30px;
+    color: var(--white); /* Default white */
+}
+
+/* Logic for "DONE" items */
+.roadmap-item.done .status-circle {
+    background-color: #6FDE7A; /* Green circle */
+}
+
+.roadmap-item.done .stage-text {
+    color: #6FDE7A; /* Green text */
+}
+
+/* Emblem container */
+.roadmap-emblem-container {
+    position: absolute;
+    right: -20px; /* Adjust this to move it closer or further from the edge */
+    top: 50%;
+    transform: translateY(-50%); /* Centers it vertically relative to the list */
+    z-index: 5;
+    pointer-events: none; /* Allows clicks to pass through if it overlaps text */
+}
+
+.roadmap-emblem-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/*REACH OUT*/
+.reachout-page {
+    background-color: var(--white);
+}
+
+.reachout-container {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+.reachout-grid {
+    display: grid;
+    grid-template-columns: 1fr 535px; /* Text on left, Form on right */
+    gap: 80px;
+    align-items: start;
+}
+
+/* Left Column Styling */
+.reachout-info .intro-text {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 40px;
+}
+
+.category-list p {
+    font-family: var(--font-body);
+    font-size: 20px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.category-list strong {
+    font-family: var(--font-heading);
+    color: var(--blue-dark);
+}
+
+.social-links {
+    margin-top: 60px;
+    font-family: var(--font-heading);
+    font-size: 24px;
+}
+
+.social-links ul {
+    list-style: none;
+    margin: 15px 0;
+}
+
+.social-links span {
+    color: var(--grey-text);
+}
+
+.discord-cta a {
+    color: var(--blue-dark);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Form Card Styling */
+.reachout-form-card {
+    background: var(--white);
+    border: 1px solid var(--blue-dark);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0px 4px 13.8px rgba(0, 0, 0, 0.05);
+}
+
+.reachout-form-card .form-group {
+    margin-bottom: 20px;
+}
+
+.reachout-form-card input, 
+.reachout-form-card textarea {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--blue-dark); /* Your rectangle border */
+    border-radius: 5px; 
+    padding: 15px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    color: var(--blue-dark);
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.reachout-form-card input::placeholder,
+.reachout-form-card textarea {
+    min-height: 180px;
+    resize: vertical; /* Only allows up/down scaling */
+}
+
+.send-btn {
+    width: 100%;
+    height: 70px;
+    background-color: var(--blue-dark);
+    color: var(--white);
+    border: none;
+    border-radius: 72px;
+    font-family: var(--font-body);
+    font-size: 32px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-top: 20px;
+}
+
+.send-btn:active, .cta-button:active {
+    transform: scale(0.98); /* Slight click effect */
+}
+
+.send-btn:hover {
+    opacity: 0.9;
+}
+
+/* Tablet/Mobile logic */
+@media (max-width: 1100px) {
+    .reachout-grid {
+        grid-template-columns: 1fr;
+    }
+    .reachout-form-card {
+        width: 100%;
+    }
+}
+
+/* ADD THIS TO YOUR style.css */
+
+.input-container {
+  position: relative;
+  width: 340px; 
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.custom-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* Makes it invisible so you only see the SVG */
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 16px;
+  color: #000000;
+  z-index: 2; /* Ensures it sits ABOVE the SVG so you can click it */
+}
+
+.input-border-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Sits behind the text field */
+  pointer-events: none; /* Tells the browser to ignore the SVG so it doesn't block clicks */
+}
+
+.cta-button {
+  width: 340px;
+  height: 60px;
+  background-color: #0A0566;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}

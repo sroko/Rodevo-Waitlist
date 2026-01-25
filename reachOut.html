@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodevo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;300;400&family=Lustria&family=Tiro+Tamil&display=swap" rel="stylesheet">
+</head>
+<body class="reachout-page">
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-ro">Ro</span><span class="logo-devo">devo</span>
+                <span class="logo-waitlist">Waitlist</span>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutUs.html">About Us</a>
+                <a href="roadmap.html">Roadmap</a>
+                <a href="reachOut.html" class="active">Reach Out</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container reachout-container">
+        <div class="reachout-grid">
+            
+            <div class="reachout-info">
+                <p class="intro-text">
+                    To ensure your inquiry is directed to the appropriate department and handled efficiently, 
+                    please reference the following categories when reaching out:
+                </p>
+
+                <div class="category-list">
+                    <p><strong>General Inquiries:</strong> For any questions regarding the Rodevo platform, our upcoming roadmap, or our mission.</p>
+                    <p><strong>Tutor Onboarding:</strong> For tutors seeking detailed information regarding our vetting process, platform fees, or anything similar.</p>
+                    <p><strong>Student Support:</strong> For students inquiring about subject availability, account security, or how to navigate the platform upon launch.</p>
+                    <p><strong>Partnerships & Press:</strong> For media inquiries, collaborative opportunities, or partnerships that align with our strategic goals.</p>
+                    <p><strong>Technical Feedback:</strong> For reporting issues with our pre-launch site or providing suggestions on features.</p>
+                </div>
+
+                <div class="social-links">
+                    <p>Follow us on social media!</p>
+                    <ul>
+                        <li>TikTok: <span>unpublished</span></li>
+                        <li>Instagram: <span>unpublished</span></li>
+                        <li>X: <span>unpublished</span></li>
+                    </ul>
+                    <p class="discord-cta">Join the <a href="https://discord.gg/R386wRf77h">Discord community</a>!</p>
+                </div>
+            </div>
+
+            <div class="reachout-form-card">
+                <form action="https://formspree.io/f/xqezodgl" method="POST">
+                <div class="form-group">
+                    <input type="email" name="sender-email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Message..." rows="8" required></textarea>
+                </div>
+            <button type="submit" class="send-btn">Send</button>
+    </form>
+</div>
+
+        </div>
+    </main>
+
+    <script>
+  const handleForm = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        alert("Success! We've received your information.");
+        form.reset(); // This clears all content written by the user
+      } else {
+        alert("Oops! There was a problem. Please try again.");
+      }
+    } catch (error) {
+      alert("Error connecting to the server.");
+    }
+  };
+
+  // Attach the logic to your form
+  document.querySelectorAll('form').forEach(f => f.addEventListener("submit", handleForm));
+</script>
+
+</body>
+</html>
