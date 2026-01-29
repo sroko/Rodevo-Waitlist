@@ -343,11 +343,10 @@
             });
 
             if (response.ok) {
-            alert("Success! We've received your submission.");
+            alert("Thank you!");
             form.reset();
             } else {
             const errorData = await response.json();
-            // This will tell you EXACTLY why Formspree is angry
             alert("Formspree Error: " + errorData.error);
             }
         } catch (error) {
@@ -358,6 +357,7 @@
     </script>
 </body>
 </html>
+
 
 
 
