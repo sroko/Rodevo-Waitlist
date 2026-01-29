@@ -96,6 +96,7 @@ header {
 nav {
     display: flex;
     align-items: center;
+    position: relative; /* Needed for the dot to position absolutely relative to nav */
 }
 
 nav a {
@@ -108,28 +109,25 @@ nav a {
     transition: color 0.3s ease;
 }
 
-/* The Blue Dot implementation */
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -15px; /* Positioned under the text like Figma */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: var(--blue-dark);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
 /* Active state for the clicked link */
 nav a.active {
     color: var(--blue-dark);
 }
 
-nav a.active::after {
-    opacity: 1;
+/* --- THE BULLET PILL DOT ANIMATION --- */
+#nav-dot {
+    position: absolute;
+    bottom: -15px;
+    height: 6px;
+    width: 6px; /* Starts as a circle */
+    background-color: var(--blue-dark);
+    border-radius: 100px; 
+    transform: translateX(-50%);
+    transition: left 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                width 0.3s ease-out,
+                background-color 0.3s ease;
+    pointer-events: none;
+    z-index: 100;
 }
 
 /* --- Hero Section --- */
@@ -310,8 +308,7 @@ nav a.active::after {
     .logo-ro, .logo-devo { font-size: 36px; }
     .logo-waitlist { font-size: 24px; }
     nav a { font-size: 18px; margin-left: 15px; }
-    nav a::after { bottom: -8px; width: 5px; height: 5px; }
-
+    
     .hero-content { flex-direction: column; }
     .hero-text-block { width: 100%; }
     .hero-bg-triangle { width: 100%; height: 600px; }
@@ -561,6 +558,33 @@ body.no-scroll {
     color: #6FDE7A; /* Green text */
 }
 
+/* --- ROADMAP WAVE ANIMATION --- */
+/* Target only white circles (roadmap items that are NOT done) */
+.roadmap-item:not(.done) .status-circle {
+    animation: dotWave 2.5s infinite ease-in-out;
+}
+
+/* Staggered delays to create the Up-to-Down wave feel */
+.roadmap-item:not(.done):nth-child(1) .status-circle { animation-delay: 0.0s; }
+.roadmap-item:not(.done):nth-child(2) .status-circle { animation-delay: 0.2s; }
+.roadmap-item:not(.done):nth-child(3) .status-circle { animation-delay: 0.4s; }
+.roadmap-item:not(.done):nth-child(4) .status-circle { animation-delay: 0.6s; }
+.roadmap-item:not(.done):nth-child(5) .status-circle { animation-delay: 0.8s; }
+.roadmap-item:not(.done):nth-child(6) .status-circle { animation-delay: 1.0s; }
+.roadmap-item:not(.done):nth-child(7) .status-circle { animation-delay: 1.2s; }
+.roadmap-item:not(.done):nth-child(8) .status-circle { animation-delay: 1.4s; }
+
+@keyframes dotWave {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.9);
+    }
+}
+
 /* Emblem container */
 .roadmap-emblem-container {
     position: absolute;
@@ -699,8 +723,6 @@ body.no-scroll {
     }
 }
 
-/* ADD THIS TO YOUR style.css */
-
 .input-container {
   position: relative;
   width: 340px; 
@@ -820,33 +842,11 @@ body.no-scroll {
     }
 }
 
-/* Update your active dot CSS with this */
-nav a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background-color: var(--blue-dark);
-    border-radius: 50%;
-    
-    /* The Animation */
-    animation: dotStretch 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+/* --- SPA SECTION VISIBILITY --- */
+.spa-section {
+    display: none; 
 }
 
-@keyframes dotStretch {
-    0% {
-        transform: translateX(-50%) scaleX(0.2) scaleY(2); /* Stretched thin and tall */
-        opacity: 0;
-    }
-    60% {
-        transform: translateX(-50%) scaleX(1.5) scaleY(0.8); /* Squashed slightly wide */
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-50%) scaleX(1) scaleY(1); /* Back to perfect circle */
-        opacity: 1;
-    }
+.spa-section.active {
+    display: block; 
 }
